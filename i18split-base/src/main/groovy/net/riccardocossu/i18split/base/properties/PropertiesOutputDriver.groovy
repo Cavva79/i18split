@@ -8,6 +8,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 import java.io.IOException;
 
 import org.apache.commons.configuration.Configuration;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import net.riccardocossu.i18split.base.config.ConfigKeys;
 import net.riccardocossu.i18split.base.driver.OutputDriver;
@@ -62,6 +63,7 @@ public class PropertiesOutputDriver implements OutputDriver {
 				if(isXml) {
 					target.storeToXML(s, GENERATED_BY,encoding)
 				} else {
+					StringEscapeUtils.escapeJava(s, null)
 					target.store(s, GENERATED_BY)
 				}
 			}
